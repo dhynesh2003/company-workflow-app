@@ -1,0 +1,1 @@
+import "./globals.css";export const metadata={title:"WorkFlow Phase 1",description:"Hierarchical work assignment system"};export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en" suppressHydrationWarning><body>{children}</body></html>}

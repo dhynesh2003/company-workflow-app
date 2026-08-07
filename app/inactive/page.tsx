@@ -1,0 +1,1 @@
+export default function Inactive(){return <main className="auth"><section className="card authbox"><h1>Account inactive</h1><p>Your administrator has deactivated this account.</p></section></main>}

@@ -1,0 +1,3 @@
+"use server";import { requireRole } from "@/lib/auth";import { revalidatePath } from "next/cache";
+export async function addCategory(formData:FormData){const {supabase,profile}=await requireRole(["admin"]);await supabase.from("work_categories").insert({organization_id:profile.organization_id,name:String(formData.get("name")).trim(),measurement_type:String(formData.get("measurement_type")),default_unit:String(formData.get("default_unit")||"")||null});revalidatePath("/admin/work-categories")}
+export async function toggleCategory(formData:FormData){const {supabase}=await requireRole(["admin"]);await supabase.from("work_categories").update({is_active:String(formData.get("active"))!=="true"}).eq("id",String(formData.get("id")));revalidatePath("/admin/work-categories")}
