@@ -405,8 +405,8 @@ export default async function ReviewPage({
       )}
 
       <section className="card review-summary-card">
-        <div className="grid grid2">
-          <div>
+        <div className="review-summary-grid">
+          <div className="review-requirement-column">
             <div className="review-section-title">
               <div className="review-section-icon">
                 <FileText size={21} />
@@ -424,7 +424,7 @@ export default async function ReviewPage({
               </div>
             </div>
 
-            <div className="review-copy-block">
+            <div className="review-copy-block review-requirement-content">
               <p>
                 {
                   submission.tasks
