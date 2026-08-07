@@ -14,7 +14,6 @@ import {
   UsersRound,
 } from "lucide-react";
 
-import { EmptyState } from "@/components/empty-state";
 import { requireProfile } from "@/lib/auth";
 
 type DashboardTask = {
@@ -161,26 +160,23 @@ export default async function Dashboard() {
   ).length;
 
   const dueTasks = tasks
-    .filter(
-      (
-        task
-      ): task is DashboardTask & {
-        due_date: string;
-      } => Boolean(task.due_date)
-    )
-    .sort(
-      (
-        firstTask,
-        secondTask
-      ) =>
-        new Date(
-          firstTask.due_date
-        ).getTime() -
-        new Date(
-          secondTask.due_date
-        ).getTime()
-    )
-    .slice(0, 8);
+  .filter(
+    (
+      task
+    ): task is DashboardTask & {
+      due_date: string;
+    } =>
+      Boolean(task.due_date) &&
+      !["completed", "cancelled"].includes(
+        task.status
+      )
+  )
+  .sort(
+    (firstTask, secondTask) =>
+      new Date(firstTask.due_date).getTime() -
+      new Date(secondTask.due_date).getTime()
+  )
+  .slice(0, 8);
 
   const canAssign = [
     "admin",
@@ -235,6 +231,89 @@ export default async function Dashboard() {
           </Link>
         </div>
       </div>
+      
+
+      {dueTasks.length > 0 && (
+        <section className="card due-work-card due-alert-card">
+          <div className="section-heading">
+            <div>
+              <h2>Due soon and overdue</h2>
+
+              <p className="muted">
+                Urgent work requiring your attention.
+              </p>
+            </div>
+
+            <div
+              className="section-heading-icon due-alert-icon"
+              aria-hidden="true"
+            >
+              <AlertTriangle size={23} />
+            </div>
+          </div>
+
+          <div className="due-task-list">
+            {dueTasks.map((task) => {
+              const statusLabel =
+                task.status.replaceAll("_", " ");
+
+              const priorityLabel =
+                task.priority || "normal";
+
+              return (
+                <article
+                  className="due-task-item due-task-alert"
+                  key={task.id}
+                >
+                  <div className="due-task-main">
+                    <div
+                      className="due-task-icon due-alert-task-icon"
+                      aria-hidden="true"
+                    >
+                      <AlertTriangle size={21} />
+                    </div>
+
+                    <div className="due-task-copy">
+                      <strong className="due-task-title">
+                        {task.title}
+                      </strong>
+
+                      <div className="due-task-meta">
+                        <span
+                          className={`badge status-${task.status}`}
+                        >
+                          {statusLabel}
+                        </span>
+
+                        <span
+                          className={`priority priority-${priorityLabel}`}
+                        >
+                          {priorityLabel}
+                        </span>
+
+                        <span className="due-task-date due-alert-date">
+                          {new Date(
+                            task.due_date
+                          ).toLocaleString()}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <Link
+                    href={`/tasks/${task.id}`}
+                    className="dashboard-open-icon"
+                    aria-label={`Open task ${task.title}`}
+                    title={`Open task ${task.title}`}
+                  >
+                    <ArrowUpRight size={20} />
+                  </Link>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       <section className="stats-grid">
         <Metric
@@ -304,112 +383,6 @@ export default async function Dashboard() {
         />
       </section>
 
-      <section className="card due-work-card">
-        <div className="section-heading">
-          <div>
-            <h2>
-              Due soon and overdue
-            </h2>
-
-            <p className="muted">
-              The most urgent visible work,
-              ordered by due date.
-            </p>
-          </div>
-
-          <div
-            className="section-heading-icon"
-            aria-hidden="true"
-          >
-            <Clock3 size={23} />
-          </div>
-        </div>
-
-        {dueTasks.length > 0 ? (
-          <div className="due-task-list">
-            {dueTasks.map((task) => {
-              const statusLabel =
-                task.status.replaceAll(
-                  "_",
-                  " "
-                );
-
-              const priorityLabel =
-                task.priority || "normal";
-
-              return (
-                <article
-                  className="due-task-item"
-                  key={task.id}
-                >
-                  <div className="due-task-main">
-                    <div
-                      className="due-task-icon"
-                      aria-hidden="true"
-                    >
-                      <ClipboardList
-                        size={21}
-                      />
-                    </div>
-
-                    <div className="due-task-copy">
-                      <strong className="due-task-title">
-                        {task.title}
-                      </strong>
-
-                      <div className="due-task-meta">
-                        <span
-                          className={`badge status-${task.status}`}
-                        >
-                          {statusLabel}
-                        </span>
-
-                        <span
-                          className={`priority priority-${priorityLabel}`}
-                        >
-                          {priorityLabel}
-                        </span>
-
-                        <span className="due-task-date">
-                          {new Date(
-                            task.due_date
-                          ).toLocaleString()}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <Link
-                    href={`/tasks/${task.id}`}
-                    className="dashboard-open-icon"
-                    aria-label={`Open task ${task.title}`}
-                    title={`Open task ${task.title}`}
-                  >
-                    <ArrowUpRight
-                      size={20}
-                    />
-                  </Link>
-                </article>
-              );
-            })}
-          </div>
-        ) : (
-          <EmptyState
-            title="No approaching deadlines"
-            description="There are no visible tasks with a due date yet."
-            actionHref={
-              canAssign
-                ? "/tasks/new"
-                : "/my-work"
-            }
-            actionLabel={
-              canAssign
-                ? "Assign a task"
-                : "Open my work"
-            }
-          />
-        )}
-      </section>
     </div>
   );
 }

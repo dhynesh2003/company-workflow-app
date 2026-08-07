@@ -1281,3 +1281,35 @@
     grid-template-columns: 1fr;
   }
 }
+.due-alert-card {
+  border: 1px solid #fecaca;
+  background: linear-gradient(135deg, #fff7f7 0%, #ffffff 100%);
+}
+
+.due-alert-card .section-heading h2 {
+  color: #b91c1c;
+}
+
+.due-alert-icon {
+  background: #fee2e2 !important;
+  color: #dc2626 !important;
+}
+
+.due-task-alert {
+  border: 1px solid #fecaca !important;
+  background: #ffffff;
+}
+
+.due-task-alert:hover {
+  border-color: #ef4444 !important;
+}
+
+.due-alert-task-icon {
+  background: #fee2e2 !important;
+  color: #dc2626 !important;
+}
+
+.due-alert-date {
+  color: #dc2626;
+  font-weight: 700;
+}
