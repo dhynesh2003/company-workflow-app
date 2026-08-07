@@ -1798,3 +1798,231 @@
     padding: 18px;
   }
 }
+/* =========================================================
+   DAILY WORK LOG — CLARITY & TABLE USABILITY
+   ========================================================= */
+
+.daily-log-page {
+  gap: 22px;
+}
+
+.daily-log-work-card {
+  padding: 24px 0 16px;
+  overflow: hidden;
+}
+
+.daily-log-work-card > .section-heading,
+.daily-log-work-card > .daily-log-help {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.daily-log-help {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border: 1px solid #dce8ee;
+  border-radius: 13px;
+  color: #52677e;
+  background: #f7fbfd;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.daily-log-help strong {
+  color: #10203b;
+}
+
+.daily-log-category-warning {
+  border-color: #f5dda3;
+}
+
+.daily-log-table {
+  min-width: 1380px;
+}
+
+.daily-log-table th {
+  white-space: nowrap;
+}
+
+.daily-log-table td {
+  vertical-align: middle;
+}
+
+.daily-log-category-select {
+  min-width: 180px;
+}
+
+.daily-log-task-select {
+  min-width: 245px;
+}
+
+.daily-log-table .input.wide {
+  min-width: 290px;
+}
+
+.daily-log-table .input.small {
+  min-width: 84px;
+}
+
+.daily-log-table input[name="unit"] {
+  min-width: 175px;
+}
+
+.daily-log-table select[name="completion_status"] {
+  min-width: 150px;
+}
+
+@media (max-width: 760px) {
+  .daily-log-work-card {
+    padding-top: 18px;
+  }
+
+  .daily-log-work-card > .section-heading,
+  .daily-log-work-card > .daily-log-help {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+}
+/* =========================================================
+   SUPER ADMIN — EXECUTIVE COMPANY OVERVIEW
+   ========================================================= */
+
+.super-admin-page {
+  gap: 22px;
+}
+
+.super-admin-range-tabs {
+  display: inline-flex;
+  width: fit-content;
+  gap: 6px;
+  padding: 5px;
+  border: 1px solid #dce7ee;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(13, 36, 72, 0.05);
+}
+
+.super-admin-range-tabs a {
+  padding: 9px 13px;
+  border-radius: 10px;
+  color: #667085;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.super-admin-range-tabs a.active {
+  color: #ffffff;
+  background:
+    linear-gradient(
+      135deg,
+      var(--workflow-blue, #1684c2),
+      var(--workflow-blue-deep, #1857a6)
+    );
+}
+
+.super-admin-filter-bar {
+  display: grid;
+  grid-template-columns:
+    150px
+    150px
+    minmax(170px, 1fr)
+    minmax(150px, 0.8fr)
+    minmax(220px, 1.2fr)
+    auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.super-admin-search-field {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 11px;
+  border: 1px solid #cfd7e6;
+  border-radius: 8px;
+  color: #7a8799;
+  background: #fff;
+}
+
+.super-admin-search-field:focus-within {
+  border-color: var(--workflow-blue, #1684c2);
+  box-shadow: 0 0 0 4px rgba(22,132,194,.1);
+}
+
+.super-admin-search-field input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #172033;
+}
+
+.super-admin-stat-value {
+  max-width: calc(100% - 64px);
+  font-size: clamp(28px, 3vw, 40px);
+}
+
+.super-admin-section {
+  padding: 24px;
+}
+
+.super-admin-people-table {
+  min-width: 1080px;
+}
+
+.super-admin-work-table {
+  min-width: 1320px;
+}
+
+.super-admin-people-table td,
+.super-admin-work-table td {
+  vertical-align: middle;
+}
+
+.super-admin-person {
+  min-width: 180px;
+  display: grid;
+  gap: 4px;
+}
+
+.super-admin-person strong {
+  color: #10203b;
+}
+
+.super-admin-person span {
+  color: #7a8799;
+  font-size: 12px;
+}
+
+.super-admin-description {
+  min-width: 260px;
+  max-width: 420px;
+  white-space: normal;
+  line-height: 1.5;
+}
+
+@media (max-width: 1200px) {
+  .super-admin-filter-bar {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .super-admin-search {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 760px) {
+  .super-admin-filter-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .super-admin-search {
+    grid-column: auto;
+  }
+
+  .super-admin-filter-bar .btn {
+    width: 100%;
+  }
+}
