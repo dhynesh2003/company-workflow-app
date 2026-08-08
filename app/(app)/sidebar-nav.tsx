@@ -30,6 +30,12 @@ const superAdminItems: NavItem[] = [
     icon: "◈",
     roles: ["super_admin"],
   },
+  {
+    href: "/super-admin/teams",
+    label: "Teams Overview",
+    icon: "◫",
+    roles: ["super_admin"],
+  },
 ];
 
 const workspaceItems: NavItem[] = [

@@ -2195,3 +2195,170 @@
     grid-template-columns: 1fr;
   }
 }
+/* SUPER ADMIN — TEAMS OVERVIEW */
+
+.super-admin-teams-page {
+  gap: 22px;
+}
+
+.super-admin-period-label {
+  color: #7a8799;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.super-admin-team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.super-admin-team-card {
+  padding: 22px;
+  display: grid;
+  gap: 18px;
+}
+
+.super-admin-team-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.super-admin-team-card-head h2 {
+  margin: 4px 0 0;
+}
+
+.super-admin-team-icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: #eaf6fc;
+  color: var(--workflow-blue, #1684c2);
+}
+
+.super-admin-team-lead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #5e6d81;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.super-admin-team-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid #e5ebf1;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.super-admin-team-metrics > div {
+  display: grid;
+  gap: 5px;
+  padding: 15px 14px;
+  background: #fbfcfd;
+  border-right: 1px solid #e5ebf1;
+}
+
+.super-admin-team-metrics > div:last-child {
+  border-right: 0;
+}
+
+.super-admin-team-metrics span {
+  color: #7a8799;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.super-admin-team-metrics strong {
+  color: #17233b;
+  font-size: 18px;
+}
+
+.super-admin-danger-text {
+  color: #dc2626 !important;
+}
+
+.super-admin-team-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.super-admin-team-mini-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #6f7d90;
+  font-size: 13px;
+}
+
+.super-admin-unassigned-card {
+  padding: 22px;
+}
+
+.super-admin-unassigned-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.super-admin-unassigned-person {
+  display: grid;
+  gap: 4px;
+  padding: 13px 14px;
+  border: 1px solid #e5ebf1;
+  border-radius: 12px;
+  background: #fbfcfd;
+}
+
+.super-admin-unassigned-person span {
+  color: #7a8799;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+@media (max-width: 1050px) {
+  .super-admin-team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .super-admin-unassigned-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .super-admin-team-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .super-admin-team-metrics > div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .super-admin-team-metrics > div:nth-child(-n+2) {
+    border-bottom: 1px solid #e5ebf1;
+  }
+
+  .super-admin-team-card-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .super-admin-team-card-footer .btn {
+    width: 100%;
+  }
+
+  .super-admin-unassigned-list {
+    grid-template-columns: 1fr;
+  }
+}
