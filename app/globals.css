@@ -2943,3 +2943,758 @@
     text-align: center;
   }
 }
+/* =========================================================
+   SUPER ADMIN — EMPLOYEE FOCUS / TEAM + ASSIGNMENT FLOW
+   ========================================================= */
+
+.super-admin-focus-page {
+  gap: 18px;
+}
+
+.super-admin-person-link {
+  position: relative;
+  padding-right: 24px;
+  border-radius: 8px;
+  transition: background .16s ease, transform .16s ease;
+}
+
+.super-admin-person-link::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: 3px;
+  color: #1684c2;
+  font-weight: 900;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity .16s ease, transform .16s ease;
+}
+
+.super-admin-person-link:hover {
+  transform: translateX(2px);
+}
+
+.super-admin-person-link:hover::after {
+  opacity: 1;
+  transform: translate(3px, -50%);
+}
+
+.super-admin-focus-profile {
+  border-color: #d5e5ef;
+  background:
+    radial-gradient(circle at 92% 16%, rgba(37, 183, 168, .10), transparent 28%),
+    linear-gradient(145deg, #ffffff, #f7fbfd);
+  box-shadow: 0 18px 42px rgba(19, 55, 91, .08);
+}
+
+.super-admin-focus-period {
+  display: grid;
+  gap: 5px;
+  justify-items: end;
+  padding: 11px 14px;
+  border: 1px solid #dce8ef;
+  border-radius: 13px;
+  background: rgba(255,255,255,.84);
+}
+
+.super-admin-focus-period span {
+  color: #7a899c;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.super-admin-focus-period strong {
+  color: #1c466d;
+  font-size: 12px;
+}
+
+.super-admin-focus-date-filter {
+  display: grid;
+  grid-template-columns: minmax(150px, 190px) minmax(150px, 190px) auto;
+  gap: 12px;
+  align-items: end;
+  width: fit-content;
+  max-width: 100%;
+  padding: 15px;
+  border-radius: 16px;
+}
+
+.super-admin-focus-date-filter .btn {
+  min-height: 42px;
+}
+
+.super-admin-focus-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.super-admin-focus-summary-card {
+  min-width: 0;
+  display: grid;
+  gap: 8px;
+  padding: 16px 18px;
+  border: 1px solid #dce7ef;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #fff, #f8fbfd);
+  box-shadow: 0 9px 24px rgba(20, 50, 90, .05);
+}
+
+.super-admin-focus-summary-card span {
+  color: #718197;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+
+.super-admin-focus-summary-card strong {
+  color: #102f5a;
+  font-size: 24px;
+  letter-spacing: -.025em;
+}
+
+.super-admin-team-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid #cae1ee;
+  border-radius: 999px;
+  color: #176fa5;
+  background: #eef8fc;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.super-admin-team-context-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 1px solid #e1e9ef;
+  border-radius: 14px;
+  background: #fbfdfe;
+}
+
+.super-admin-team-context-facts > div {
+  display: grid;
+  gap: 6px;
+  padding: 15px 16px;
+  border-right: 1px solid #e6edf2;
+}
+
+.super-admin-team-context-facts > div:last-child {
+  border-right: 0;
+}
+
+.super-admin-team-context-facts span {
+  color: #7b899b;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+.super-admin-team-context-facts strong {
+  color: #173a60;
+  font-size: 13px;
+}
+
+.super-admin-team-member-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.super-admin-team-member-card {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid #e0e8ee;
+  border-radius: 13px;
+  background: #fff;
+  transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+
+.super-admin-team-member-card:hover {
+  transform: translateY(-1px);
+  border-color: #b8d6e6;
+  box-shadow: 0 9px 22px rgba(19, 67, 101, .07);
+}
+
+.super-admin-team-member-card.current {
+  border-color: #8dcce8;
+  background: #f1faff;
+  box-shadow: inset 0 0 0 1px rgba(22,132,194,.08);
+}
+
+.super-admin-member-avatar {
+  flex: 0 0 auto;
+  width: 37px;
+  height: 37px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  color: #fff;
+  background: linear-gradient(145deg, #34a9d7, #176ab4);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.super-admin-team-member-card > span:last-child {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.super-admin-team-member-card strong,
+.super-admin-team-member-card small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.super-admin-team-member-card strong {
+  color: #173757;
+  font-size: 13px;
+}
+
+.super-admin-team-member-card small {
+  color: #7b899b;
+  font-size: 11px;
+}
+
+.super-admin-process-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.super-admin-process-counts span {
+  padding: 7px 9px;
+  border-radius: 999px;
+  color: #557086;
+  background: #f1f6f9;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.super-admin-process-list {
+  display: grid;
+  gap: 13px;
+}
+
+.super-admin-process-card {
+  padding: 17px;
+  border: 1px solid #dfe8ee;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #fff, #fbfdfe);
+}
+
+.super-admin-process-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.super-admin-process-card-head h3 {
+  margin: 4px 0 0;
+  color: #102f57;
+  font-size: 16px;
+  letter-spacing: -.015em;
+}
+
+.super-admin-process-relation {
+  color: #7a8999;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+.super-admin-process-flow {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) auto minmax(180px, 1.2fr) auto minmax(150px, 1fr);
+  gap: 10px;
+  align-items: stretch;
+}
+
+.super-admin-process-person,
+.super-admin-process-task-node {
+  min-width: 0;
+  display: grid;
+  align-content: center;
+  gap: 4px;
+  padding: 13px 14px;
+  border: 1px solid #e0e8ee;
+  border-radius: 13px;
+  background: #fff;
+}
+
+.super-admin-process-person.doing {
+  border-color: #cfe6d8;
+  background: #f7fcf9;
+}
+
+.super-admin-process-task-node {
+  border-color: #d2e3ef;
+  background: #f5faff;
+}
+
+.super-admin-process-person span,
+.super-admin-process-task-node span {
+  color: #8190a1;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+.super-admin-process-person strong,
+.super-admin-process-task-node strong {
+  overflow: hidden;
+  color: #183a5b;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.super-admin-process-person small,
+.super-admin-process-task-node small {
+  color: #8290a0;
+  font-size: 10px;
+}
+
+.super-admin-process-arrow {
+  display: grid;
+  place-items: center;
+  color: #76a5c1;
+}
+
+.super-admin-task-stepper {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 17px 4px 13px;
+}
+
+.super-admin-task-stepper::before {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 7px;
+  height: 2px;
+  background: #e1e8ee;
+}
+
+.super-admin-task-step {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  color: #8996a5;
+}
+
+.super-admin-task-step > span {
+  width: 15px;
+  height: 15px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #cfd9e1;
+  box-shadow: 0 0 0 1px #d7e0e7;
+}
+
+.super-admin-task-step.done > span {
+  background: #36b86b;
+  box-shadow: 0 0 0 1px #a8dfbd;
+}
+
+.super-admin-task-step.active > span {
+  background: #1684c2;
+  box-shadow: 0 0 0 4px rgba(22,132,194,.12);
+}
+
+.super-admin-task-step.done,
+.super-admin-task-step.active {
+  color: #4b657a;
+}
+
+.super-admin-task-step small {
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.super-admin-process-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 16px;
+  padding-top: 11px;
+  border-top: 1px solid #edf1f4;
+  color: #778697;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.super-admin-focus-work-table {
+  min-width: 980px;
+}
+
+/* The task can be assigned but not started yet. */
+.status-not_started {
+  color: #5c6d80 !important;
+  background: #f1f4f7 !important;
+}
+
+@media (max-width: 1050px) {
+  .super-admin-focus-summary-grid,
+  .super-admin-team-context-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .super-admin-team-context-facts > div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .super-admin-team-context-facts > div:nth-child(-n+2) {
+    border-bottom: 1px solid #e6edf2;
+  }
+
+  .super-admin-team-member-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .super-admin-process-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .super-admin-process-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 760px) {
+  .super-admin-focus-profile {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .super-admin-focus-period {
+    grid-column: 1 / -1;
+    justify-items: start;
+    width: 100%;
+  }
+
+  .super-admin-focus-date-filter,
+  .super-admin-focus-summary-grid,
+  .super-admin-team-context-facts,
+  .super-admin-team-member-grid {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .super-admin-team-context-facts > div {
+    border-right: 0;
+    border-bottom: 1px solid #e6edf2;
+  }
+
+  .super-admin-team-context-facts > div:last-child {
+    border-bottom: 0;
+  }
+
+  .super-admin-process-card-head {
+    flex-direction: column;
+  }
+
+  .super-admin-task-step small {
+    font-size: 8px;
+  }
+}
+
+/* =========================================================
+   SUPER ADMIN — DEDICATED TEAM WORKSPACE
+   ========================================================= */
+
+.super-admin-team-workspace-page {
+  gap: 18px;
+}
+
+.super-admin-team-workspace-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.super-admin-team-workspace-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 22px;
+  border-color: #d5e5ef;
+  background:
+    radial-gradient(circle at 91% 18%, rgba(22, 132, 194, .10), transparent 27%),
+    linear-gradient(145deg, #ffffff, #f7fbfd);
+  box-shadow: 0 16px 38px rgba(19, 55, 91, .07);
+}
+
+.super-admin-team-workspace-identity {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.super-admin-team-workspace-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 16px;
+  color: #fff;
+  background: linear-gradient(145deg, #2da7d6, #1769b0);
+  box-shadow: 0 10px 24px rgba(22, 105, 176, .20);
+}
+
+.super-admin-team-workspace-identity h1 {
+  margin: 3px 0 4px;
+  color: var(--workflow-navy, #0d2448);
+  font-size: clamp(27px, 3.2vw, 38px);
+  letter-spacing: -.035em;
+}
+
+.super-admin-team-workspace-identity p {
+  margin: 0;
+  color: #6e7d90;
+  font-size: 13px;
+}
+
+.super-admin-team-lead-chip {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 190px;
+  padding: 11px 13px;
+  border: 1px solid #d7e6ee;
+  border-radius: 14px;
+  color: #176fa5;
+  background: rgba(255,255,255,.82);
+}
+
+.super-admin-team-lead-chip > span {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.super-admin-team-lead-chip small {
+  color: #7d8b9c;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.super-admin-team-lead-chip strong {
+  overflow: hidden;
+  color: #173a60;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.super-admin-team-workspace-metric {
+  position: relative;
+  padding-left: 54px;
+}
+
+.super-admin-team-workspace-metric-icon {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  color: #1684c2;
+  background: #eaf6fc;
+}
+
+.super-admin-team-workflow-section .super-admin-process-card {
+  box-shadow: 0 7px 18px rgba(20, 50, 90, .035);
+}
+
+.super-admin-process-task-link {
+  transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+
+.super-admin-process-task-link:hover {
+  transform: translateY(-1px);
+  border-color: #9ccde4;
+  box-shadow: 0 7px 18px rgba(22, 132, 194, .08);
+}
+
+.super-admin-process-meta a {
+  margin-left: auto;
+  color: #1684c2;
+  font-weight: 850;
+}
+
+.super-admin-team-pipeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.super-admin-pipeline-item {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #e0e8ee;
+  border-radius: 14px;
+  background: #fbfdfe;
+}
+
+.super-admin-pipeline-item > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.super-admin-pipeline-item span {
+  color: #66778a;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.super-admin-pipeline-item strong {
+  color: #173a60;
+  font-size: 20px;
+}
+
+.super-admin-pipeline-track {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e9eef2;
+}
+
+.super-admin-pipeline-track > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #a4b1bd;
+}
+
+.super-admin-pipeline-item.progress .super-admin-pipeline-track > span {
+  background: #1684c2;
+}
+
+.super-admin-pipeline-item.review .super-admin-pipeline-track > span {
+  background: #f2a33b;
+}
+
+.super-admin-pipeline-item.complete .super-admin-pipeline-track > span {
+  background: #36b86b;
+}
+
+.super-admin-team-workload-table {
+  min-width: 1050px;
+}
+
+.super-admin-team-person-cell {
+  min-width: 210px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.super-admin-team-person-cell > span:last-child {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.super-admin-team-person-cell strong,
+.super-admin-team-person-cell small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.super-admin-team-person-cell strong {
+  color: #173a60;
+  font-size: 13px;
+}
+
+.super-admin-team-person-cell small {
+  color: #7c8998;
+  font-size: 10px;
+}
+
+.super-admin-current-work-list {
+  min-width: 220px;
+  display: grid;
+  gap: 5px;
+}
+
+.super-admin-current-work-list a {
+  max-width: 260px;
+  overflow: hidden;
+  color: #176fa5;
+  font-size: 11px;
+  font-weight: 750;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.super-admin-current-work-list small {
+  color: #8390a0;
+  font-size: 10px;
+}
+
+.super-admin-completed-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #248b50;
+  font-weight: 850;
+}
+
+@media (max-width: 1050px) {
+  .super-admin-team-pipeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .super-admin-team-workspace-topline,
+  .super-admin-team-workspace-hero {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .super-admin-team-lead-chip {
+    width: 100%;
+  }
+
+  .super-admin-team-pipeline {
+    grid-template-columns: 1fr;
+  }
+
+  .super-admin-process-meta a {
+    width: 100%;
+    margin-left: 0;
+  }
+}

@@ -25,15 +25,15 @@ type NavItem = {
 
 const superAdminItems: NavItem[] = [
   {
-    href: "/super-admin/dashboard",
-    label: "Company Overview",
-    icon: "◈",
-    roles: ["super_admin"],
-  },
-  {
     href: "/super-admin/teams",
     label: "Teams Overview",
     icon: "◫",
+    roles: ["super_admin"],
+  },
+  {
+    href: "/super-admin/dashboard",
+    label: "Company Overview",
+    icon: "◈",
     roles: ["super_admin"],
   },
 ];

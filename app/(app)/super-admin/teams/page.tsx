@@ -311,9 +311,9 @@ export default async function SuperAdminTeamsPage({
 
                 <Link
                   className="btn secondary"
-                  href={`/super-admin/dashboard?range=${range}&team=${team.id}`}
+                  href={`/super-admin/teams/${team.id}?range=${range}`}
                 >
-                  View team work
+                  View team workflow
                 </Link>
               </div>
             </article>
