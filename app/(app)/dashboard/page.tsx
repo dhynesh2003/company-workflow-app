@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import styles from "./dashboard-premium.module.css";
 
 import {
   AlertTriangle,
@@ -11,7 +12,6 @@ import {
   FileCheck2,
   ListTodo,
   Plus,
-  UsersRound,
 } from "lucide-react";
 
 import { requireProfile } from "@/lib/auth";
@@ -190,7 +190,7 @@ export default async function Dashboard() {
   ].includes(profile.role);
 
   return (
-    <div className="grid">
+    <div className={`grid ${styles.dashboard}`}>
       <div className="page-head">
         <div>
           <h1>Dashboard</h1>
@@ -302,7 +302,7 @@ export default async function Dashboard() {
 
                   <Link
                     href={`/tasks/${task.id}`}
-                    className="dashboard-open-icon"
+                    className={`dashboard-open-icon ${styles.openIcon}`}
                     aria-label={`Open task ${task.title}`}
                     title={`Open task ${task.title}`}
                   >
@@ -315,11 +315,11 @@ export default async function Dashboard() {
         </section>
       )}
 
-      <section className="stats-grid">
+      <section className={`stats-grid ${styles.metricsGrid}`}>
         <Metric
           label="Visible tasks"
           value={tasks.length}
-          icon={<ListTodo size={24} />}
+          icon={<ListTodo size={25} strokeWidth={1.85} />}
           tone="blue"
         />
 
@@ -327,7 +327,7 @@ export default async function Dashboard() {
           label="Completed"
           value={completed}
           icon={
-            <CheckCircle2 size={24} />
+            <CheckCircle2 size={25} strokeWidth={1.85} />
           }
           tone="green"
         />
@@ -335,7 +335,7 @@ export default async function Dashboard() {
         <Metric
           label="Waiting / changes"
           value={waiting}
-          icon={<Clock3 size={24} />}
+          icon={<Clock3 size={25} strokeWidth={1.85} />}
           tone="amber"
         />
 
@@ -343,7 +343,7 @@ export default async function Dashboard() {
           label="Blocked / overdue"
           value={blocked + overdue}
           icon={
-            <AlertTriangle size={24} />
+            <AlertTriangle size={25} strokeWidth={1.85} />
           }
           tone="red"
         />
@@ -358,8 +358,9 @@ export default async function Dashboard() {
           href="/reviews"
           ariaLabel="Open review queue"
           icon={
-            <FileCheck2 size={24} />
+            <FileCheck2 size={24} strokeWidth={1.8} />
           }
+          tone="violet"
         />
 
         <DashboardCard
@@ -369,7 +370,8 @@ export default async function Dashboard() {
           }
           href="/notifications"
           ariaLabel="Open notifications"
-          icon={<Bell size={24} />}
+          icon={<Bell size={24} strokeWidth={1.8} />}
+          tone="cyan"
         />
 
         <DashboardCard
@@ -378,8 +380,9 @@ export default async function Dashboard() {
           href="/my-timesheet"
           ariaLabel="Open timesheet"
           icon={
-            <UsersRound size={24} />
+            <ClipboardList size={24} strokeWidth={1.8} />
           }
+          tone="indigo"
         />
       </section>
 
@@ -391,7 +394,7 @@ type MetricProps = {
   label: string;
   value: number;
   icon: ReactNode;
-  tone: string;
+  tone: "blue" | "green" | "amber" | "red";
 };
 
 function Metric({
@@ -401,11 +404,14 @@ function Metric({
   tone,
 }: MetricProps) {
   return (
-    <div className="stat-card">
+    <div className={`stat-card ${styles.metricCard} ${styles[tone]}`}>
       <div
-        className={`stat-icon stat-icon-${tone}`}
+        className={`stat-icon stat-icon-${tone} ${styles.metricIcon}`}
+        aria-hidden="true"
       >
-        {icon}
+        <span className={styles.iconHalo} />
+        <span className={styles.iconGlyph}>{icon}</span>
+        <span className={styles.iconSpark} />
       </div>
 
       <span className="stat-label">
@@ -425,6 +431,7 @@ type DashboardCardProps = {
   href: string;
   ariaLabel: string;
   icon: ReactNode;
+  tone: "violet" | "cyan" | "indigo";
 };
 
 function DashboardCard({
@@ -433,17 +440,20 @@ function DashboardCard({
   href,
   ariaLabel,
   icon,
+  tone,
 }: DashboardCardProps) {
   return (
-    <div className="card dashboard-card">
+    <div className={`card dashboard-card ${styles.dashboardCard} ${styles[tone]}`}>
       <div className="dashboard-card-top">
-        <div className="dashboard-card-icon">
-          {icon}
+        <div className={`dashboard-card-icon ${styles.secondaryIcon} ${styles[tone]}`} aria-hidden="true">
+          <span className={styles.iconHalo} />
+          <span className={styles.iconGlyph}>{icon}</span>
+          <span className={styles.iconSpark} />
         </div>
 
         <Link
           href={href}
-          className="dashboard-open-icon"
+          className={`dashboard-open-icon ${styles.openIcon}`}
           aria-label={ariaLabel}
           title={ariaLabel}
         >
